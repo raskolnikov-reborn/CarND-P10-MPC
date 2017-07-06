@@ -39,7 +39,7 @@ I attempted fitting polynomials of orders 2 through 5. My observations are recor
 * Order 3 : Best Results. I was able to achieve speeds upwards of over 80mph and smooth trajectories
 * Order 2 : Too Much understeer. Speed needs to be just right to even make one turn
 
-** A Common behaviour I observed was that for all orders of polynomials except for 3 is that at specific turns the speed would slow down to almost zero and the vehicle would get stuck in a local minima of sorts. Even for really poor parameters for order 3, I did not observe this problem. I'm yet to comprehend the source of this issue but I'm going over the lessons and additional reading one more time.
+** A Common behaviour I observed was that for all orders of polynomials except for 3 is that at specific turns the speed would slow down to almost zero and the vehicle would get stuck in a local minima of sorts. Even for really poor parameters for order 3, I did not observe this problem. I'm yet to comprehend the source of this issue but I'm going over the lessons and additional reading one more time. **
 
 ### Latency
 Latency is dealt with by applying a kinematic update on the current state with dt = latency to arrive at a predicted state this state is then passed on the mpc as the starting point so that it takes into account where the vehicle might be when the next control input shall be applied.
