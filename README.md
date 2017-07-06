@@ -31,6 +31,16 @@ I chose dt to mirror the latency. This way one update per latency cycle can be m
 Choice of N: This was pretty much tuned empirically
 Observations: Setting it too far resulted in delay in reducing the cost and bringing the trajectory in alignment with reference. This sometimes caused vehicle to understeer and go off road on sharp turns. Setting it to too small a value resulted in shudden shifts and overshoots. This also sometimes resulted in the car leaving the track
 
+### Polynomial Fitting
+I attempted fitting polynomials of orders 2 through 5. My observations are recorded below
+
+* Order 5: Lot of sudden changes, causing vehicle to drive off road. Lowering the number of points helped suppress some of this behaviour but was still not able to drive past the first two turns
+* Order 4 : More of the same. Erratic behavior and driving off road. However this time on very low speeds and with very short horizon I was able to complete a lap
+* Order 3 : Best Results. I was able to achieve speeds upwards of over 80mph and smooth trajectories
+* Order 2 : Too Much understeer. Speed needs to be just right to even make one turn
+
+** A Common behaviour I observed was that for all orders of polynomials except for 3 is that at specific turns the speed would slow down to almost zero and the vehicle would get stuck in a local minima of sorts. Even for really poor parameters for order 3, I did not observe this problem. I'm yet to comprehend the source of this issue but I'm going over the lessons and additional reading one more time.
+
 ### Latency
 Latency is dealt with by applying a kinematic update on the current state with dt = latency to arrive at a predicted state this state is then passed on the mpc as the starting point so that it takes into account where the vehicle might be when the next control input shall be applied.
 
